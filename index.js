@@ -8,7 +8,7 @@ const productRoutes = require('./routes/productRoutes')
 const cors = require('cors');
 const path = require('path');
 const app = express()
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URI)
@@ -26,6 +26,6 @@ app.listen(PORT, ()=>{
     console.log(`server started and running at ${PORT}`);
 });
 
-app.use('/home',(req,res)=>{
+app.use('/',(req,res)=>{
     res.send("<h1> welcome to my project");
 })
